@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class BetterPlayerUtils {
+
   static String formatBitrate(int bitrate) {
     if (bitrate < 1000) {
       return "$bitrate bit/s";
@@ -60,6 +61,22 @@ class BetterPlayerUtils {
     if (!kReleaseMode) {
       // ignore: avoid_print
       print(logMessage);
+    }
+  }
+
+  static String formatResolution(int width)
+  {
+    if (width <= 640)
+    {
+      return "Low";
+    }
+    else if ( width <= 960 )
+    {
+      return "Medium";
+    }
+    else
+    {
+      return "High";
     }
   }
 }

@@ -168,6 +168,9 @@ class BetterPlayerControlsConfiguration {
   ///Color of text in bottom modal sheet used for overflow menu items.
   final Color overflowModalTextColor;
 
+  // Icon Back
+  final IconData backIcon;
+
   const BetterPlayerControlsConfiguration({
     this.controlBarColor = Colors.black87,
     this.textColor = Colors.white,
@@ -220,6 +223,7 @@ class BetterPlayerControlsConfiguration {
     this.backgroundColor = Colors.black,
     this.overflowModalColor = Colors.white,
     this.overflowModalTextColor = Colors.black,
+    this.backIcon = Icons.arrow_back_ios
   });
 
   factory BetterPlayerControlsConfiguration.white() {

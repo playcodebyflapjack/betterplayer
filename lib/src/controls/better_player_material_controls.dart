@@ -202,17 +202,17 @@ class _BetterPlayerMaterialControlsState
                 duration: _controlsConfiguration.controlsHideTime,
                 onEnd: _onPlayerHide,
                 child: Container(
-                  //color: _controlsConfiguration.controlBarColor,
+                  // color: _controlsConfiguration.controlBarColor,
                   height: _controlsConfiguration.controlBarHeight,
                   width: double.infinity,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      if (_controlsConfiguration.enablePip)
-                        _buildPipButtonWrapperWidget(_hideStuff, _onPlayerHide)
-                      else
-                        const SizedBox(),
-                      _buildMoreButton(),
+                      if (_controlsConfiguration.enablePip && _betterPlayerController!.betterPlayerConfiguration.onClickBtnBack == null)
+                        _buildPipButtonWrapperWidget(_hideStuff, _onPlayerHide),
+                      if ( _betterPlayerController!.betterPlayerConfiguration.onClickBtnBack != null)
+                        Container(child: _buildBack()),
+                      Container(child: _buildMoreButton()),
                     ],
                   ),
                 ),
@@ -278,6 +278,16 @@ class _BetterPlayerMaterialControlsState
         ),
       ),
     );
+  }
+  
+  Widget _buildBack()
+  {
+      return  GestureDetector( child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Icon(
+          _controlsConfiguration.backIcon,
+          color: _controlsConfiguration.iconsColor)
+      ),onTap: _betterPlayerController!.betterPlayerConfiguration.onClickBtnBack);
   }
 
   Widget _buildBottomBar() {
